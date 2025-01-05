@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'firewatch-v1-ef9bbdb7d75d.herokuapp.com',  # Heroku app domain
     'localhost',  # Local development
+    '127.0.0.1' # Also Local development
 ]
 
 
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'django_intro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
