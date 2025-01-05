@@ -1,1 +1,1 @@
-python django_intro/manage.py runserver
+python manage.py runserver
