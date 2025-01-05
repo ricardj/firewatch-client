@@ -1,0 +1,1 @@
+python django_intro/manage.py runserver
