@@ -4,11 +4,11 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="njOPtyvvBXMwMofN9_Jq-21" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="140" height="280" as="geometry" />
+        </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="njOPtyvvBXMwMofN9_Jq-3" target="njOPtyvvBXMwMofN9_Jq-6">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="njOPtyvvBXMwMofN9_Jq-3" value="Celery&lt;br&gt;Django" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="570" y="120" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="njOPtyvvBXMwMofN9_Jq-5" target="njOPtyvvBXMwMofN9_Jq-3">
           <mxGeometry relative="1" as="geometry" />
@@ -17,7 +17,7 @@
           <mxGeometry x="390" y="120" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-6" value="Web Client (Javascript)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="570" y="230" width="120" height="60" as="geometry" />
+          <mxGeometry x="570" y="275" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-10" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="190" y="85" width="150" height="130" as="geometry" />
@@ -37,9 +37,6 @@
         <mxCell id="njOPtyvvBXMwMofN9_Jq-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="njOPtyvvBXMwMofN9_Jq-8" target="njOPtyvvBXMwMofN9_Jq-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="njOPtyvvBXMwMofN9_Jq-21" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="560" y="100" width="140" height="210" as="geometry" />
-        </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-22" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="170" y="70" width="350" height="230" as="geometry" />
         </mxCell>
@@ -47,10 +44,22 @@
           <mxGeometry x="315" y="30" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-24" value="Heroku" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="600" y="50" width="60" height="30" as="geometry" />
+          <mxGeometry x="600" y="30" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="njOPtyvvBXMwMofN9_Jq-25" value="Both items here are Docker containers" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="200" y="245" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="njOPtyvvBXMwMofN9_Jq-29" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="570" y="100" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="njOPtyvvBXMwMofN9_Jq-3" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="njOPtyvvBXMwMofN9_Jq-29">
+          <mxGeometry width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="njOPtyvvBXMwMofN9_Jq-27" value="Celery&lt;br&gt;Django" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="njOPtyvvBXMwMofN9_Jq-29">
+          <mxGeometry x="10" y="12.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="njOPtyvvBXMwMofN9_Jq-28" value="Gunicorn" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="njOPtyvvBXMwMofN9_Jq-29">
+          <mxGeometry x="30" y="62.5" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
