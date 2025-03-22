@@ -8,29 +8,21 @@
       <v-row>
         <!-- Image Section -->
         <v-col cols="6">
-          <v-card class="pa-4" color="surface" elevation="2">
-            <h3 class="mb-3">Uploaded Images</h3>
-            <v-row dense>
-              <v-col
-                  v-for="(img, index) in images"
-                  :key="index"
-                  cols="12"
-                  class="mb-3"
-              >
-                <v-img
-                    :src="img"
-                    aspect-ratio="3/4"
-                    cover
-                    class="rounded"
-                />
-              </v-col>
-            </v-row>
+          <v-card  class="mx-auto" max-width="400" elevation="4">
+            <v-responsive :aspect-ratio="768 / 1579">
+            <v-img
+                src="https://mfiles.alphacoders.com/100/1008007.png"
+                height="100%"
+                cover
+                eager
+            ></v-img>
+            </v-responsive>
           </v-card>
         </v-col>
 
         <!-- Logs Section -->
         <v-col cols="6">
-          <v-card class="pa-4" color="surface" elevation="2">
+          <v-card class="pa-0" color="surface" elevation="2">
             <h3 class="mb-3">Logs</h3>
             <div class="log-box">
               <div
@@ -50,12 +42,6 @@
   <script setup>
     import { ref } from 'vue'
 
-    const images = ref([
-      'https://via.placeholder.com/150x200',
-      'https://via.placeholder.com/150x200',
-      'https://via.placeholder.com/150x200',
-    ])
-
     const logs = ref([
       'App started',
       'User uploaded a file',
@@ -71,7 +57,6 @@
 .log-box {
   max-height: 400px;
   overflow-y: auto;
-  background-color: #1e1e1e;
   padding: 1rem;
   border-radius: 8px;
 }
@@ -79,6 +64,5 @@
 .log-line {
   margin-bottom: 0.5rem;
   font-family: monospace;
-  color: #ccc;
 }
 </style>
