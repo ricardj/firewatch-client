@@ -5,7 +5,7 @@ import OutputSection from "./OutputSection.vue";
 </script>
 
 <template>
-  <v-container class="fill-height">
+  <v-container class="fill-height w-100">
     <v-row class="fill-height">
       <v-col cols="4" class="fill-height">
         <v-card class="fill-height" color="surface" elevation="2">
@@ -14,9 +14,8 @@ import OutputSection from "./OutputSection.vue";
         </v-card>
       </v-col>
 
-      <v-col cols="8" class="fill-height">
-        <v-card class="fill-height d-flex flex-column" color="surface" elevation="2">
-          <v-card-title>Output</v-card-title>
+      <v-col cols="8" class="fill-height w-100">
+        <v-card class="fill-height w-100" color="surface" elevation="2">
           <OutputSection/>
         </v-card>
       </v-col>
