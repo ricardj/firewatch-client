@@ -7,14 +7,14 @@ import OutputSection from "./OutputSection.vue";
 <template>
   <v-container class="fill-height">
     <v-row class="fill-height">
-      <v-col cols="4">
+      <v-col cols="4" class="fill-height">
         <v-card class="fill-height" color="surface" elevation="2">
           <v-card-title>Input</v-card-title>
           <InputSection/>
         </v-card>
       </v-col>
 
-      <v-col cols="8">
+      <v-col cols="8" class="fill-height">
         <v-card class="fill-height d-flex flex-column" color="surface" elevation="2">
           <v-card-title>Output</v-card-title>
           <OutputSection/>

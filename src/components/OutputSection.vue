@@ -3,24 +3,18 @@
 </script>
 
 <template>
-    <v-container class="d-flex flex-row align-stretch" style="flex-grow: 1;">
-        <!-- Image Section -->
-          <v-card  class="fill-height" elevation="4" >
-            askljdfhalskjdfh
-            <v-img
-                src="https://mfiles.alphacoders.com/100/1008007.png"
-            ></v-img>
-          </v-card>
+    <v-container
+        class="fill-height d-flex flex-row align-stretch"
+        style="flex-grow: 1; max-height: 100%;">
 
+      <v-img
+          style="background: red; height: 100%; width: auto; display: block; max-width: 100%; object-fit: scale-down;"
+          src="https://mfiles.alphacoders.com/100/1008007.png"
+      ></v-img>
         <!-- Logs Section -->
 
-          <v-card color="surface" elevation="2">
-            <v-card-title>Output Log</v-card-title>
-            <div class="log-box">
-              <div>
-
-              </div>
-            </div>
+          <v-card  color="surface" elevation="2">
+            whatever
           </v-card>
     </v-container>
   </template>

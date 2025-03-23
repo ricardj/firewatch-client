@@ -9,7 +9,7 @@ import FirewatchHome from './components/FirewatchHome.vue'
       <v-app-bar-title class="font-weight-bold">FIREWATCH</v-app-bar-title>
     </v-app-bar>
 -->
-    <v-main  style="height: 100dvh; overflow: hidden;">
+    <v-main  style="height: 100dvh; overflow: hidden; width: 100dvw">
       <firewatch-home></firewatch-home>
     </v-main>
   </v-app>
