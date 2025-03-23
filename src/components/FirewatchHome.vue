@@ -5,19 +5,18 @@ import OutputSection from "./OutputSection.vue";
 </script>
 
 <template>
-  <v-spacer height="5dvh"></v-spacer>
-  <v-container class="fill-height" fluid>
-    <v-row>
+  <v-container class="fill-height">
+    <v-row class="fill-height">
       <v-col cols="4">
         <v-card class="fill-height" color="surface" elevation="2">
+          <v-card-title>Input</v-card-title>
           <InputSection/>
         </v-card>
       </v-col>
 
       <v-col cols="8">
-        <v-card class="d-flex flex-column"
-                height="85dvh"
-                max-height="85dvh" color="surface" elevation="2">
+        <v-card class="fill-height d-flex flex-column" color="surface" elevation="2">
+          <v-card-title>Output</v-card-title>
           <OutputSection/>
         </v-card>
       </v-col>
