@@ -4,7 +4,7 @@
 
 <template>
 
-  <div class="w-100" style="height: 80%;">
+
     <v-container
         class="fill-height d-flex flex-row align-start"
         style="gap: 5%;">
@@ -20,7 +20,7 @@
       </v-card>
 
     </v-container>
-    </div>
+
   </template>
 
   <script setup>

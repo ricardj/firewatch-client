@@ -1,20 +1,22 @@
 <script setup>
 
+import FileUpload from "./FileUpload.vue";
 </script>
 
 <template>
 
-  <v-container class="d-flex flex-column align-stretch">
-    <v-file-input
-        label="Upload App"
-        prepend-icon="mdi-upload"
-        show-size
-        v-model="file"
-    />
-    <v-btn color="primary" @click="handleClick">
-      Process app
-    </v-btn>
-  </v-container>
+    <v-container
+        class="fill-height w-100 d-flex flex-column align-stretch"
+    style="gap: 10px">
+      <FileUpload></FileUpload>
+
+
+      <v-btn color="primary" @click="handleClick">
+        Process app
+      </v-btn>
+    </v-container>
+
+
 </template>
 
 <style scoped>
