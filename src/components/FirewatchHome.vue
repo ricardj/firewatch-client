@@ -2,7 +2,7 @@
 
 import InputSection from "./InputSection.vue";
 import OutputSection from "./OutputSection.vue";
-import ResponsiveCardContent from "./ResponsiveCardContent.vue";
+import ResponsiveCardContent from "./utilities/ResponsiveCardContent.vue";
 </script>
 
 <template>

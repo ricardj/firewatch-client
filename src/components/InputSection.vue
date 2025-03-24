@@ -1,6 +1,11 @@
 <script setup>
+import FileUpload from "./utilities/FileUpload.vue";
 
-import FileUpload from "./FileUpload.vue";
+function handleClick()
+{
+  alert("Welcome to Firewatch");
+}
+
 </script>
 
 <template>
@@ -18,7 +23,3 @@ import FileUpload from "./FileUpload.vue";
 
 
 </template>
-
-<style scoped>
-
-</style>
