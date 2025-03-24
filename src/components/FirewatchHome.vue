@@ -16,7 +16,11 @@ import OutputSection from "./OutputSection.vue";
 
       <v-col cols="8" class="fill-height w-100">
         <v-card class="fill-height w-100" color="surface" elevation="2">
-          <OutputSection/>
+          <v-card-title>Hello there</v-card-title>
+          <v-card-text class="fill-height">
+            <OutputSection/>
+          </v-card-text>
+
         </v-card>
       </v-col>
     </v-row>

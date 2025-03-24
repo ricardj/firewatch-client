@@ -4,16 +4,17 @@
 
 <template>
 
-  <div class="flex-grow-1 fill-height w-100">
+  <div class="w-100" style="height: 90%;">
     <v-container
-        class="fill-height d-flex flex-row align-stretch flex-grow-1">
-      <v-card class="fill-height">
-        <img class="fill-height" style="width: auto; min-width: 80%"
+        class="fill-height d-flex flex-row align-start">
+      <v-card class="fill-height" style="width: 40%;">
+        <v-img class="fill-height" style="width: auto;"
              src="https://mfiles.alphacoders.com/100/1008007.png"
-        >
+               cover
+        ></v-img>
       </v-card>
 
-      <v-card  class="flex-grow-1" color="surface" elevation="2">
+      <v-card class="flex-grow-1 fill-height" color="surface" elevation="2">
         <v-card-title>Logs</v-card-title>
       </v-card>
 
