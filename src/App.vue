@@ -4,14 +4,17 @@ import FirewatchHome from './components/FirewatchHome.vue'
 
 <template>
   <v-app>
-<!--
-    <v-app-bar color="primary" dark flat app height="20dvh">
-      <v-app-bar-title class="font-weight-bold">FIREWATCH</v-app-bar-title>
+    <v-card class="mx-auto w-100">
+      <v-layout>
+    <v-app-bar   density="compact" color="primary">
+      <v-app-bar-title>FIREWATCH</v-app-bar-title>
     </v-app-bar>
--->
+
     <v-main  style="height: 100dvh; overflow: hidden; width: 100dvw">
       <firewatch-home></firewatch-home>
     </v-main>
+      </v-layout>
+    </v-card>
   </v-app>
 </template>
 

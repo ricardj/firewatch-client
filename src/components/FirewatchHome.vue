@@ -6,18 +6,32 @@ import OutputSection from "./OutputSection.vue";
 
 <template>
   <v-container class="fill-height w-100">
-    <v-row class="fill-height">
+    <v-row class="fill-height w-100">
       <v-col cols="4" class="fill-height">
-        <v-card class="fill-height" color="surface" elevation="2">
-          <v-card-title>Input</v-card-title>
-          <InputSection/>
+        <v-card class="fill-height w-100"
+                prepend-icon="$vuetify"
+                subtitle="Upload an APK"
+                color="surface"
+                elevation="2">
+          <template v-slot:title>
+            <span class="font-weight-black">Input</span>
+          </template>
+          <v-card-text class="fill-height bg-surface-light pt-4">
+            <InputSection/>
+          </v-card-text>
         </v-card>
       </v-col>
 
       <v-col cols="8" class="fill-height w-100">
-        <v-card class="fill-height w-100" color="surface" elevation="2">
-          <v-card-title>Hello there</v-card-title>
-          <v-card-text class="fill-height">
+        <v-card class="fill-height w-100"
+                prepend-icon="$vuetify"
+                subtitle="Check the process unfold"
+                color="surface"
+                elevation="2">
+          <template v-slot:title>
+            <span class="font-weight-black">Output</span>
+          </template>
+          <v-card-text class="fill-height bg-surface-light pt-4">
             <OutputSection/>
           </v-card-text>
 

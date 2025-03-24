@@ -4,9 +4,10 @@
 
 <template>
 
-  <div class="w-100" style="height: 90%;">
+  <div class="w-100" style="height: 80%;">
     <v-container
-        class="fill-height d-flex flex-row align-start">
+        class="fill-height d-flex flex-row align-start"
+        style="gap: 5%;">
       <v-card class="fill-height" style="width: 40%;">
         <v-img class="fill-height" style="width: auto;"
              src="https://mfiles.alphacoders.com/100/1008007.png"
