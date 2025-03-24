@@ -1,9 +1,13 @@
 <script setup>
 import FileUpload from "./utilities/FileUpload.vue";
+import {getUploadURL} from "../services/firewatch_gateway_service.js";
 
 function handleClick()
 {
-  alert("Welcome to Firewatch");
+  getUploadURL().then((upload_url)=> {
+
+  })
+
 }
 
 </script>
