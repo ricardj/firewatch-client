@@ -1,18 +1,18 @@
 const TARGET_SERVER = "http://localhost:8000/";
 
 
+export function useGatewayService() {
+    return {getUploadURL, uploadFileToUrl: uploadFileToUrl}
+}
 
 
-
-
-
-export async function getUploadURL() {
+async function getUploadURL() {
     const response = await fetch(TARGET_SERVER + "get_upload_url");
     let json_response = await response.json();
     return json_response.message;
 }
 
-export async function postData(payload) {
+async function uploadFileToUrl(uploadFileURL, fileToUpload) {
     const response = await fetch("http://localhost:8000/your-endpoint", {
         method: "POST",
         headers: {

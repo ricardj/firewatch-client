@@ -1,19 +1,21 @@
 <script setup>
 import FileUpload from "./utilities/FileUpload.vue";
-import {getUploadURL} from "@/composables/useGatewayService.js";
+import {useGatewayService} from "@/composables/useGatewayService.js";
 import {useFileUpload} from "@/composables/useFileUpload.js";
+import {useSimulationService} from "@/composables/useSimulationService.js";
 
-function start_simulation() {
+function uploadFile() {
+  useFileUpload().tryUploadFile();
+}
 
+function startSimulation() {
   //Check first if the file is uploaded.
-  alert(useFileUpload().uploadedFile.value.name)
+  useSimulationService().startSimulation();
 
-  return;
+}
 
-  getUploadURL().then((upload_url) => {
-    alert(upload_url)
-  })
-
+function stopSimulation() {
+  alert("Stopping simulation...");
 }
 
 </script>
@@ -24,11 +26,13 @@ function start_simulation() {
       class="fill-height w-100 d-flex flex-column align-stretch"
       style="gap: 10px">
     <FileUpload></FileUpload>
-
-    <v-btn color="primary" @click="start_simulation">
+    <v-btn color="primary" @click="uploadFile">
+      Upload file
+    </v-btn>
+    <v-btn color="primary" @click="startSimulation">
       Start simulation
     </v-btn>
-    <v-btn color="primary" @click="start_simulation">
+    <v-btn color="primary" @click="stopSimulation">
       Stop simulation
     </v-btn>
   </v-container>
