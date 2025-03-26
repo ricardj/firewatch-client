@@ -5,7 +5,7 @@ import {getUploadURL} from "../services/firewatch_gateway_service.js";
 function handleClick()
 {
   getUploadURL().then((upload_url)=> {
-
+    alert(upload_url)
   })
 
 }
