@@ -10,7 +10,7 @@ function uploadFile() {
 
 function startSimulation() {
   //Check first if the file is uploaded.
-  useTaskService().startSimulation();
+  useTaskService().startTask();
 
 }
 

@@ -5,14 +5,13 @@ import {useTaskPoller} from "@/composables/useTaskPoller.js";
 
 export async function startTask() {
 
-
     if (!useFileUpload().isFileUploaded()) {
         alert("Still no file uploaded");
     }
 
     let fileUrl = useFileUpload().uploadFileURL
     let newTask = new Task(fileUrl);
-    await useGatewayService().startSimulation(newTask);
+    await useGatewayService().startTask(newTask);
     //TODO: Check if the Task has been created successfully
     //TODO: start the polling process
     await useTaskPoller().startPolling();

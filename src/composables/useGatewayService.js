@@ -12,6 +12,7 @@ const getUploadUrlEndpoint = `${TARGET_SERVER}/get_upload_url`;
 export function useGatewayService() {
 
     async function startTask() {
+
     }
 
     async function stopTask() {
