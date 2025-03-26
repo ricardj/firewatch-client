@@ -1,6 +1,11 @@
 const TARGET_SERVER = "http://localhost:8000/";
 
 
+
+
+
+
+
 export async function getUploadURL() {
     const response = await fetch(TARGET_SERVER + "get_upload_url");
     let json_response = await response.json();

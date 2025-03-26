@@ -1,12 +1,15 @@
 <script setup>
-import { shallowRef } from 'vue'
+import {useFileUpload} from "@/composables/useFileUpload.js";
 
-const model = shallowRef(null)
+const { uploadedFile } = useFileUpload()
 </script>
 
 <template>
-  <v-file-upload density="compact">
-
+  <v-file-upload
+      v-model="uploadedFile"
+      density="compact"
+      :multiple="false"
+  >
   </v-file-upload>
 </template>
 
