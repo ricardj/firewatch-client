@@ -2,7 +2,7 @@
 import FileUpload from "./utilities/FileUpload.vue";
 import {useGatewayService} from "@/composables/useGatewayService.js";
 import {useFileUpload} from "@/composables/useFileUpload.js";
-import {useSimulationService} from "@/composables/useSimulationService.js";
+import {useTaskService} from "@/composables/useTaskService.js";
 
 function uploadFile() {
   useFileUpload().tryUploadFile();
@@ -10,7 +10,7 @@ function uploadFile() {
 
 function startSimulation() {
   //Check first if the file is uploaded.
-  useSimulationService().startSimulation();
+  useTaskService().startSimulation();
 
 }
 
