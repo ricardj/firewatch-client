@@ -1,10 +1,11 @@
 import {useFileUpload} from "@/composables/useFileUpload.js";
 import {useGatewayService} from "@/composables/useGatewayService.js";
+import {useTaskPoller} from "@/composables/useTaskPoller.js";
 
 
 export async function startTask() {
 
-    //TODO:
+
     if (!useFileUpload().isFileUploaded()) {
         alert("Still no file uploaded");
     }
@@ -12,8 +13,9 @@ export async function startTask() {
     let fileUrl = useFileUpload().uploadFileURL
     let newTask = new Task(fileUrl);
     await useGatewayService().startSimulation(newTask);
-
-
+    //TODO: Check if the Task has been created successfully
+    //TODO: start the polling process
+    await useTaskPoller().startPolling();
 }
 export async function stopTask() {
     await useGatewayService().stopTask();
