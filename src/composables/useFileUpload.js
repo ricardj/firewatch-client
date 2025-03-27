@@ -18,8 +18,8 @@ export function useFileUpload() {
 
         uploadFileURL = await useGatewayService().getUploadURL()
 
-        if (isValidUrl(uploadFileURL)) {
-            alert(`Failed to create an upload url with ${uploadFileURL}`)
+        if (!isValidUrl(uploadFileURL)) {
+            alert(`Upload URL not valid: ${uploadFileURL}`)
             return;
         }
 
@@ -50,6 +50,6 @@ export function useFileUpload() {
 
 
     return {
-        tryUploadFile, uploadFileURL,fileToUpload, isFileUploaded
+        tryUploadFile, uploadFileURL, fileToUpload, isFileUploaded
     }
 }

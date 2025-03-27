@@ -1,6 +1,6 @@
 import {startTask} from "@/composables/useTaskService.js";
 
-const TARGET_SERVER = "http://localhost:8000/";
+const TARGET_SERVER = "http://localhost:8000";
 
 
 const startTaskEndpoint = `${TARGET_SERVER}/start_task`;
@@ -22,23 +22,23 @@ export function useGatewayService() {
     }
 
     async function getUploadURL() {
-        const response = await fetch(TARGET_SERVER + "get_upload_url");
+        const response = await fetch(getUploadUrlEndpoint);
         let json_response = await response.json();
-        return json_response.message;
+        return json_response.upload_url;
 
-        fetch("http://localhost:8000/get_upload_url")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Upload URL:", data.upload_url);
-            })
-            .catch(error => {
-                console.error("Fetch error:", error);
-            });
+        // fetch("http://localhost:8000/get_upload_url")
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error("Network response was not ok");
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log("Upload URL:", data.upload_url);
+        //     })
+        //     .catch(error => {
+        //         console.error("Fetch error:", error);
+        //     });
 
     }
 
