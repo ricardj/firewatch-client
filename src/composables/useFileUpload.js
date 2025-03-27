@@ -23,7 +23,7 @@ export function useFileUpload() {
             return;
         }
 
-        uploadedFile = await useGatewayService().uploadFileToUrl(uploadFileURL, fileToUpload)
+        uploadedFile = await useGatewayService().uploadFileToUrl(uploadFileURL, fileToUpload.value)
 
         if (!uploadedFile) {
             alert("File not uploaded.")
