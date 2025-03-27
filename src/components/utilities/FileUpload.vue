@@ -1,12 +1,22 @@
 <script setup>
 import {useFileUpload} from "@/composables/useFileUpload.js";
 
-const { uploadedFile } = useFileUpload()
+const fileUpload = useFileUpload()
+const {fileToUpload} = fileUpload;
+
+function tryUploadFile() {
+  fileUpload.tryUploadFile()
+}
+
+defineExpose({
+  tryUploadFile
+})
+
 </script>
 
 <template>
   <v-file-upload
-      v-model="uploadedFile"
+      v-model="fileToUpload"
       density="compact"
       :multiple="false"
   >

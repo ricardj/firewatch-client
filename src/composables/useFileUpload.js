@@ -10,6 +10,7 @@ export function useFileUpload() {
 
     async function tryUploadFile() {
 
+        console.log(fileToUpload)
         if (!fileToUpload.value) {
             alert("Still no file selected for upload");
             return;
@@ -49,6 +50,6 @@ export function useFileUpload() {
 
 
     return {
-        tryUploadFile, uploadFileURL, isFileUploaded
+        tryUploadFile, uploadFileURL,fileToUpload, isFileUploaded
     }
 }

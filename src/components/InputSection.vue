@@ -1,11 +1,13 @@
 <script setup>
 import FileUpload from "./utilities/FileUpload.vue";
-import {useGatewayService} from "@/composables/useGatewayService.js";
 import {useFileUpload} from "@/composables/useFileUpload.js";
 import {useTaskService} from "@/composables/useTaskService.js";
+import {ref} from "vue";
+
+const fileUploadComponent = ref()
 
 function uploadFile() {
-  useFileUpload().tryUploadFile();
+  fileUploadComponent.value.tryUploadFile();
 }
 
 function startSimulation() {
@@ -25,7 +27,7 @@ function stopSimulation() {
   <v-container
       class="fill-height w-100 d-flex flex-column align-stretch"
       style="gap: 10px">
-    <FileUpload></FileUpload>
+    <FileUpload ref="fileUploadComponent"></FileUpload>
     <v-btn color="primary" @click="uploadFile">
       Upload file
     </v-btn>
