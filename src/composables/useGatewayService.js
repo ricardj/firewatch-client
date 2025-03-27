@@ -43,14 +43,15 @@ export function useGatewayService() {
     }
 
     async function uploadFileToUrl(uploadFileURL, fileToUpload) {
-        const response = await fetch("http://localhost:8000/your-endpoint", {
+        const response = await fetch(uploadFileURL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/octet-stream",
             },
-            body: JSON.stringify(payload),
+            body: fileToUpload,
         });
-        return await response.json();
+        console.log(await response.json());
+
     }
 
     return {getUploadURL, uploadFileToUrl, startTask, stopTask, fetchTaskStatus: getTaskStatus};
