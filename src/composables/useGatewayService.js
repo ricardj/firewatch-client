@@ -43,13 +43,14 @@ export function useGatewayService() {
     }
 
     async function uploadFileToUrl(uploadFileURL, fileToUpload) {
+        console.log("Doing the upload file to " + uploadFileURL);
+        console.log(fileToUpload);
+        console.log(fileToUpload.size);
         const response = await fetch(uploadFileURL, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/octet-stream",
-            },
             body: fileToUpload,
         });
+        console.log(response);
         console.log(await response.json());
 
     }
