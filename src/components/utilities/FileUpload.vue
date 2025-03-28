@@ -9,7 +9,7 @@ function tryUploadFile() {
 }
 
 defineExpose({
-  tryUploadFile
+  tryUploadFile,fileUpload
 })
 
 </script>

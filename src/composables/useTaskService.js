@@ -9,7 +9,7 @@ export async function startTask() {
         alert("Still no file uploaded");
     }
 
-    let fileUrl = useFileUpload().uploadFileURL
+    let fileUrl = useFileUpload().uploadURLResponse
     let newTask = new Task(fileUrl);
     await useGatewayService().startTask(newTask);
     //TODO: Check if the Task has been created successfully

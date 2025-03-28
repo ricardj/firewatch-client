@@ -6,7 +6,7 @@ import {useGatewayService} from "@/composables/useGatewayService.js";
 export function useFileUpload() {
     const fileToUpload = ref(null) // shared reactive file
     let uploadedFile = null;
-    let uploadFileURL = ""; //TODO: here set the upload url.
+    let uploadURLResponse = ""; //TODO: here set the upload url.
 
     async function tryUploadFile() {
 
@@ -16,14 +16,14 @@ export function useFileUpload() {
             return;
         }
 
-        uploadFileURL = await useGatewayService().getUploadURL()
-
-        if (!isValidUrl(uploadFileURL)) {
-            alert(`Upload URL not valid: ${uploadFileURL}`)
+        uploadURLResponse = await useGatewayService().getUploadURL()
+        let uploadURL = uploadURLResponse.uploadUrl;
+        if (!isValidUrl(uploadURL)) {
+            alert(`Upload URL not valid: ${uploadURL}`)
             return;
         }
 
-        uploadedFile = await useGatewayService().uploadFileToUrl(uploadFileURL, fileToUpload.value)
+        uploadedFile = await useGatewayService().uploadFileToUrl(uploadURL.uploadUrl, fileToUpload.value)
 
         if (!uploadedFile) {
             alert("File not uploaded.")
@@ -50,6 +50,6 @@ export function useFileUpload() {
 
 
     return {
-        tryUploadFile, uploadFileURL, fileToUpload, isFileUploaded
+        tryUploadFile, uploadURLResponse, fileToUpload, isFileUploaded
     }
 }

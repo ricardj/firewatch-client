@@ -3,6 +3,7 @@ import FileUpload from "./utilities/FileUpload.vue";
 import {useFileUpload} from "@/composables/useFileUpload.js";
 import {useTaskService} from "@/composables/useTaskService.js";
 import {ref} from "vue";
+import fileUpload from "@/components/utilities/FileUpload.vue";
 
 const fileUploadComponent = ref()
 
@@ -12,7 +13,7 @@ function uploadFile() {
 
 function startSimulation() {
   //Check first if the file is uploaded.
-  useTaskService().startTask();
+  useTaskService().startTask(fileUpload.uploadURLResponse);
 
 }
 

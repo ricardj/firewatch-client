@@ -11,8 +11,12 @@ const getUploadUrlEndpoint = `${TARGET_SERVER}/get_upload_url`;
 
 export function useGatewayService() {
 
-    async function startTask() {
-
+    async function startTask(uploadKey) {
+        let startTaskRequest = new StartTaskRequest(uploadKey);
+        const response = await fetch(startTaskEndpoint, {
+            method: "POST",
+            body: JSON.stringify(startTaskRequest),
+        });
     }
 
     async function stopTask() {
@@ -24,34 +28,23 @@ export function useGatewayService() {
     async function getUploadURL() {
         const response = await fetch(getUploadUrlEndpoint);
         let json_response = await response.json();
-        return json_response.upload_url;
-
-        // fetch("http://localhost:8000/get_upload_url")
-        //     .then(response => {
-        //         if (!response.ok) {
-        //             throw new Error("Network response was not ok");
-        //         }
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log("Upload URL:", data.upload_url);
-        //     })
-        //     .catch(error => {
-        //         console.error("Fetch error:", error);
-        //     });
-
+        let upload_key = json_response.upload_key;
+        let upload_url = json_response.upload_url;
+        return new UploadURLResponse(upload_key, upload_url);
     }
 
     async function uploadFileToUrl(uploadFileURL, fileToUpload) {
         console.log("Doing the upload file to " + uploadFileURL);
         console.log(fileToUpload);
-        console.log(fileToUpload.size);
+
         const response = await fetch(uploadFileURL, {
             method: "PUT",
             body: fileToUpload,
         });
         console.log(response);
-        console.log(await response.json());
+        // TODO: should we validate response ?
+
+        return fileToUpload;
 
     }
 
