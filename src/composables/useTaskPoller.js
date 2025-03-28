@@ -1,4 +1,5 @@
 import {ref, onUnmounted} from 'vue'
+import {useGatewayService} from "@/composables/useGatewayService.js";
 
 export function useTaskPoller() {
     const taskStatus = ref(null)
@@ -10,8 +11,7 @@ export function useTaskPoller() {
 
         intervalId = setInterval(async () => {
             try {
-                const {data} = await axios.get(`/api/task/${taskId}/status`)
-                taskStatus.value = data
+                var status = useGatewayService().fetchTaskStatus()
 
                 if (data.status === 'complete' || data.status === 'failed') {
                     stopPolling()

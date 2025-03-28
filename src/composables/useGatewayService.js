@@ -20,9 +20,16 @@ export function useGatewayService() {
     }
 
     async function stopTask() {
+        //TODO: This for now won't have an implementation
     }
 
-    async function getTaskStatus() {
+    async function getTaskStatus(taskId) {
+        let getTaskStatusRequest = new TaskStatusRequest(taskId)
+        const response = await fetch(getTaskStatusEndpoint, {
+            method: "GET",
+            body: JSON.stringify(getTaskStatusRequest),
+        });
+        
     }
 
     async function getUploadURL() {

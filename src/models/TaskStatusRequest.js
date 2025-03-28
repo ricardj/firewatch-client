@@ -1,0 +1,4 @@
+class TaskStatusRequest
+{
+    id = ""
+}

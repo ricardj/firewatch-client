@@ -3,7 +3,7 @@ class StartTaskRequest
     upload_key = "";
 
     constructor(uploadKey) {
-        this.uploadKey = uploadKey
+        this.upload_key = uploadKey
     }
 }
 
