@@ -11,9 +11,9 @@ export function useTaskPoller() {
 
         intervalId = setInterval(async () => {
             try {
-                var status = useGatewayService().fetchTaskStatus()
-
-                if (data.status === 'complete' || data.status === 'failed') {
+                let taskStatusResponse = useGatewayService().getTaskStatus(taskId);
+                
+                if (taskStatusResponse.status === 'COMPLETED') {
                     stopPolling()
                 }
             } catch (err) {

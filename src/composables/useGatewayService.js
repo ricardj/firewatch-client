@@ -29,6 +29,9 @@ export function useGatewayService() {
             method: "GET",
             body: JSON.stringify(getTaskStatusRequest),
         });
+
+        let json_response = await response.json();
+        return new TaskStatusResponse(json_response.id,response.status, response.log, response.current_image)
         
     }
 
@@ -55,5 +58,5 @@ export function useGatewayService() {
 
     }
 
-    return {getUploadURL, uploadFileToUrl, startTask, stopTask, fetchTaskStatus: getTaskStatus};
+    return {getUploadURL, uploadFileToUrl, startTask, stopTask, getTaskStatus};
 }
