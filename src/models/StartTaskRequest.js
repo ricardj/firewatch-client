@@ -1,4 +1,4 @@
-class StartTaskRequest
+export class StartTaskRequest
 {
     upload_key = "";
 

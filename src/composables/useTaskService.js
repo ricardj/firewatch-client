@@ -1,22 +1,17 @@
-import {useFileUpload} from "@/composables/useFileUpload.js";
 import {useGatewayService} from "@/composables/useGatewayService.js";
 import {useTaskPoller} from "@/composables/useTaskPoller.js";
-import fileUpload from "@/components/utilities/FileUpload.vue";
+import {StartTaskRequest} from "@/models/StartTaskRequest.js"
 
 
-export async function startTask() {
+export async function startTask(fileUrl) {
 
-    if (!fileUpload.isFileUploaded()) {
-        alert("Still no file uploaded");
-    }
-
-    let fileUrl = fileUpload.uploadURLResponse;
     let startTaskRequest = new StartTaskRequest(fileUrl);
-    await useGatewayService().startTask(startTaskRequest);
+    console.log("Created the request. Sending to Gateway Service...");
+    let taskStatusResponse = await useGatewayService().startTask(startTaskRequest);
 
     //TODO: Check if the Task has been created successfully
-    //TODO: start the polling process
-    await useTaskPoller().startPolling();
+    console.log("Now we will start polling the result.");
+    await useTaskPoller().startPolling(taskStatusResponse.id);
 }
 export async function stopTask() {
     await useGatewayService().stopTask();

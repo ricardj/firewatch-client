@@ -1,4 +1,6 @@
 import {startTask} from "@/composables/useTaskService.js";
+import {StartTaskRequest} from "@/models/StartTaskRequest.js";
+
 
 const TARGET_SERVER = "http://localhost:8000";
 
@@ -11,12 +13,16 @@ const getUploadUrlEndpoint = `${TARGET_SERVER}/get_upload_url`;
 
 export function useGatewayService() {
 
-    async function startTask(uploadKey) {
-        let startTaskRequest = new StartTaskRequest(uploadKey);
+    async function startTask(startTaskRequest) {
+        console.log("Sending startTaskRequest" + startTaskRequest);
         const response = await fetch(startTaskEndpoint, {
             method: "POST",
             body: JSON.stringify(startTaskRequest),
         });
+        let responseJson =  await response.json();
+        console.log("We received an answer");
+        console.log(responseJson);
+        return responseJson.body; //TaskStatusResponse
     }
 
     async function stopTask() {
@@ -31,8 +37,9 @@ export function useGatewayService() {
         });
 
         let json_response = await response.json();
-        return new TaskStatusResponse(json_response.id,response.status, response.log, response.current_image)
-        
+        console.log(json_response);
+        return new TaskStatusResponse(json_response.id, response.status, response.log, response.current_image)
+
     }
 
     async function getUploadURL() {
