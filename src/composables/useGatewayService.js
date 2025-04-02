@@ -14,9 +14,13 @@ const getUploadUrlEndpoint = `${TARGET_SERVER}/get_upload_url`;
 export function useGatewayService() {
 
     async function startTask(startTaskRequest) {
-        console.log("Sending startTaskRequest" + startTaskRequest);
+        console.log(startTaskRequest);
+        console.log(JSON.stringify(startTaskRequest));
         const response = await fetch(startTaskEndpoint, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify(startTaskRequest),
         });
         let responseJson =  await response.json();
