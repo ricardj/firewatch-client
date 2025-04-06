@@ -18,9 +18,6 @@ export function useTaskPoller() {
       try {
         console.log("Polling");
         taskStatus.value = await useGatewayService().getTaskStatus(taskId);
-        console.log(taskStatus.value);
-
-        //TODO: WE should here render the results
 
         if (
           taskStatus.value.status === "COMPLETED" ||

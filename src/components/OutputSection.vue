@@ -5,7 +5,7 @@ import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 
 const props = defineProps({ taskService: Object });
 
-const logContent = ref("...");
+const logContent = ref("---LOG INIT---\n");
 const outputImage = ref("https://mfiles.alphacoders.com/100/1008007.png");
 
 function getTaskStatus(): TaskStatusResponse {
@@ -22,7 +22,7 @@ watch(
 
 // Update them anytime
 function updateOutput(image, log) {
-  logContent.value += log;
+  logContent.value += log + "\n";
   outputImage.value = image;
 }
 </script>
@@ -40,7 +40,9 @@ function updateOutput(image, log) {
 
     <v-card class="flex-grow-1 fill-height" color="surface" elevation="2">
       <v-card-title>Logs</v-card-title>
-      <v-card-text>{{ logContent }} </v-card-text>
+      <v-card-text style="font-family: monospace; white-space: pre-line"
+        >{{ logContent }}
+      </v-card-text>
     </v-card>
   </v-container>
 </template>

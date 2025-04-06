@@ -16,7 +16,7 @@ export class TaskStatusResponse {
       json.id,
       json.status,
       json.logs,
-      json.currentImage,
+      json.current_image,
     );
   }
 }

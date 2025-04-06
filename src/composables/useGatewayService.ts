@@ -15,7 +15,6 @@ export function useGatewayService() {
     startTaskRequest: StartTaskRequest,
   ): Promise<TaskStatusResponse> {
     console.log(startTaskRequest);
-    console.log(JSON.stringify(startTaskRequest));
     const response = await fetch(startTaskEndpoint, {
       method: "POST",
       headers: {
@@ -24,10 +23,8 @@ export function useGatewayService() {
       body: JSON.stringify(startTaskRequest),
     });
     let responseJson = await response.json();
-    console.log("We received an answer");
     console.log(responseJson);
-    const taskStatusResponse = TaskStatusResponse.fromJson(responseJson);
-    return taskStatusResponse;
+    return TaskStatusResponse.fromJson(responseJson);
   }
 
   async function stopTask() {
@@ -46,12 +43,7 @@ export function useGatewayService() {
 
     let json_response = await response.json();
     console.log(json_response);
-    return new TaskStatusResponse(
-      json_response.id,
-      json_response.status,
-      json_response.log,
-      json_response.current_image,
-    );
+    return TaskStatusResponse.fromJson(json_response);
   }
 
   async function getUploadURL(): Promise<UploadURLResponse> {
