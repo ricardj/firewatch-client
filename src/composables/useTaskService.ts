@@ -4,6 +4,8 @@ import { StartTaskRequest } from "@/models/StartTaskRequest";
 import { UploadURLResponse } from "@/models/UploadURLResponse";
 
 export async function startTask(fileURLResponse: UploadURLResponse) {
+  console.log("Starting task reqeuest with file URL response");
+  console.log(fileURLResponse);
   let startTaskRequest = new StartTaskRequest(fileURLResponse.uploadKey);
   console.log(startTaskRequest);
   console.log("Created the request. Sending to Gateway Service...");

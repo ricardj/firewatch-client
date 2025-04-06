@@ -1,12 +1,12 @@
 // composables/useFileUpload.js
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 import { UploadURLResponse } from "@/models/UploadURLResponse";
 import { useGatewayService } from "@/composables/useGatewayService";
 
 export function useFileUpload() {
-  const fileToUpload = ref(null); // shared reactive file
+  const fileToUpload: Ref<File | null> = ref(null); // shared reactive file
   let uploadedFile: File;
-  let uploadURLResponse: UploadURLResponse | null = null; //TODO: here set the upload url.
+  const uploadURLResponse: Ref<UploadURLResponse | null> = ref(null); //TODO: here set the upload url.
 
   async function tryUploadFile() {
     console.log(fileToUpload);
@@ -15,10 +15,10 @@ export function useFileUpload() {
       return;
     }
 
-    uploadURLResponse = await useGatewayService().getUploadURL();
+    uploadURLResponse.value = await useGatewayService().getUploadURL();
     console.log("Received Upload URL:");
     console.log(uploadURLResponse);
-    let uploadURL = uploadURLResponse.uploadUrl;
+    let uploadURL = uploadURLResponse.value.uploadUrl;
     if (!isValidUrl(uploadURL)) {
       alert(`Upload URL not valid: ${uploadURL}`);
       return;
