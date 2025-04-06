@@ -2,6 +2,7 @@ import { ref, onUnmounted, Ref } from "vue";
 import { useGatewayService } from "@/composables/useGatewayService";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 import { TaskStatusRequest } from "@/models/TaskStatusRequest";
+import { LoggerService } from "@/services/LoggerService";
 
 export function useTaskPoller() {
   const isPolling: Ref<boolean> = ref(false);
@@ -12,25 +13,31 @@ export function useTaskPoller() {
     intervalMs: number = 3000,
     taskStatus: Ref<TaskStatusResponse>,
   ) => {
-    isPolling.value = true;
+    return new Promise((resolve) => {
+      isPolling.value = true;
 
-    intervalId = setInterval(async () => {
-      try {
-        console.log("Polling");
-        taskStatus.value = await useGatewayService().getTaskStatus(taskId);
+      intervalId = setInterval(async () => {
+        try {
+          console.log("Polling");
+          taskStatus.value = await useGatewayService().getTaskStatus(taskId);
 
-        if (
-          taskStatus.value.status === "COMPLETED" ||
-          taskStatus.value.status === "SUCCESS"
-        ) {
-          console.log("Task status completed");
+          if (
+            taskStatus.value.status === "COMPLETED" ||
+            taskStatus.value.status === "SUCCESS"
+          ) {
+            LoggerService.get().notificationMessage(
+              `Task finished: ${taskStatus.value.status}`,
+            );
+            stopPolling();
+            resolve();
+          }
+        } catch (err) {
+          !LoggerService.get().notificationMessage("Some kind of error.");
           stopPolling();
+          resolve();
         }
-      } catch (err) {
-        console.error("Polling error:", err);
-        stopPolling();
-      }
-    }, intervalMs);
+      }, intervalMs);
+    });
   };
 
   const stopPolling = () => {

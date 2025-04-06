@@ -4,6 +4,7 @@ import { StartTaskRequest } from "@/models/StartTaskRequest";
 import { UploadURLResponse } from "@/models/UploadURLResponse";
 import { ref, Ref } from "vue";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
+import { LoggerService } from "@/services/LoggerService";
 
 export var taskPoller = useTaskPoller();
 
@@ -15,11 +16,10 @@ const taskStatus: Ref<TaskStatusResponse> = ref({
 });
 
 export async function startTask(fileURLResponse: UploadURLResponse) {
-  console.log("Starting task reqeuest with file URL response");
-  console.log(fileURLResponse);
+  LoggerService.get().setIsLoading(true);
+  LoggerService.get().logMessage("Starting task");
   let startTaskRequest = new StartTaskRequest(fileURLResponse.uploadKey);
   console.log(startTaskRequest);
-  console.log("Created the request. Sending to Gateway Service...");
   let taskStatusResponse: TaskStatusResponse =
     await useGatewayService().startTask(startTaskRequest);
 
@@ -28,7 +28,11 @@ export async function startTask(fileURLResponse: UploadURLResponse) {
   //TODO: Check if the Task has been created successfully
   console.log("Now we will start polling the result.");
   await taskPoller.startPolling(taskStatusResponse.id, 3000, taskStatus);
+
+  LoggerService.get().logMessage("Task finished");
+  LoggerService.get().setIsLoading(false);
 }
+
 export async function stopTask() {
   await useGatewayService().stopTask();
 }

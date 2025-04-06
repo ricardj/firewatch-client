@@ -4,9 +4,13 @@ import { ref } from "vue";
 
 export class LoggerService {
   private static instance: LoggerService;
+
   public isSnackbarOn: boolean = ref(false);
   public snackbarMessage: string = ref("");
+
   public log: string = ref("");
+
+  public isLoading = ref(false);
 
   private constructor() {
     // private constructor prevents direct instantiation
@@ -19,12 +23,17 @@ export class LoggerService {
     return LoggerService.instance;
   }
 
-  notification_message(message: string): void {
+  notificationMessage(message: string): void {
     this.snackbarMessage.value = message;
     this.isSnackbarOn.value = true;
+    this.logMessage(message);
   }
 
-  log_message(message: string) {
+  logMessage(message: string) {
     this.log.value = message;
+  }
+
+  setIsLoading(value: boolean): void {
+    this.isLoading.value = value;
   }
 }

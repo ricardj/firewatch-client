@@ -1,8 +1,11 @@
 <script setup>
 import { useFileUpload } from "@/composables/useFileUpload.ts";
+import { ref } from "vue";
 
 const fileUpload = useFileUpload();
 const { fileToUpload } = fileUpload;
+
+const loading = ref(true);
 
 defineExpose({
   fileUpload,

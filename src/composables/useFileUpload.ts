@@ -2,6 +2,7 @@
 import { Ref, ref } from "vue";
 import { UploadURLResponse } from "@/models/UploadURLResponse";
 import { useGatewayService } from "@/composables/useGatewayService";
+import { LoggerService } from "@/services/LoggerService";
 
 export function useFileUpload() {
   const fileToUpload: Ref<File | null> = ref(null); // shared reactive file
@@ -9,7 +10,8 @@ export function useFileUpload() {
   const uploadURLResponse: Ref<UploadURLResponse | null> = ref(null); //TODO: here set the upload url.
 
   async function tryUploadFile() {
-    console.log(fileToUpload);
+    LoggerService.get().logMessage(fileToUpload.value?.name);
+    LoggerService.get().setIsLoading(true);
     if (!fileToUpload.value) {
       alert("Still no file selected for upload");
       return;
@@ -32,6 +34,9 @@ export function useFileUpload() {
       alert("File not uploaded.");
       return;
     }
+
+    LoggerService.get().setIsLoading(false);
+    LoggerService.get().notificationMessage("File uploaded!");
   }
 
   function isFileUploaded() {

@@ -21,8 +21,7 @@ function startSimulation() {
 }
 
 function stopSimulation() {
-  LoggerService.get().notification_message("Stopping simulation...");
-  LoggerService.get().log_message("Hello there" + Math.random());
+  LoggerService.get().notificationMessage("Hello " + Math.random());
 }
 
 defineExpose({

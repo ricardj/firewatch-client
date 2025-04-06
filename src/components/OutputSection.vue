@@ -34,6 +34,8 @@ function updateOutput(image, log) {
 function updateLog(log) {
   logContent.value += log + "\n";
 }
+
+const loading = LoggerService.get().isLoading;
 </script>
 
 <template>
@@ -52,6 +54,14 @@ function updateLog(log) {
       <v-card-text style="font-family: monospace; white-space: pre-line"
         >{{ logContent }}
       </v-card-text>
+      <v-fade-transition leave-absolute>
+        <v-progress-circular
+          v-if="loading"
+          color="info"
+          size="24"
+          indeterminate
+        ></v-progress-circular>
+      </v-fade-transition>
     </v-card>
   </v-container>
 </template>
