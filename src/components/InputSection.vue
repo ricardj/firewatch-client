@@ -1,8 +1,10 @@
 <script setup>
-import FileUpload from "./utilities/FileUpload.vue";
-import { useTaskService } from "@/composables/useTaskService.ts";
+import FileUpload from "@components/utilities/FileUpload.vue";
 import { ref } from "vue";
-import fileUpload from "@/components/utilities/FileUpload.vue";
+import { Ref } from "vue";
+
+// Accept the ref as a prop
+defineProps({ taskService });
 
 const fileUploadComponent = ref();
 
@@ -13,7 +15,7 @@ function uploadFile() {
 function startSimulation() {
   //Check first if the file is uploaded.
   console.log("Trying to start simulation...");
-  useTaskService().startTask(
+  taskService.value.startTask(
     fileUploadComponent.value.fileUpload.uploadURLResponse.value,
   );
 }

@@ -3,7 +3,12 @@ import { useGatewayService } from "@/composables/useGatewayService";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 
 export function useTaskPoller() {
-  const taskStatus = ref(null);
+  const taskStatus: Ref<TaskStatusResponse> = ref({
+    id: "NONE",
+    status: "NONE", // TODO: Replace with an enum or union type when ready
+    logs: "...",
+    currentImage: "https://mfiles.alphacoders.com/100/1008007.png",
+  });
   const isPolling: Ref<boolean> = ref(false);
   let intervalId: number | null = null;
 
@@ -13,10 +18,12 @@ export function useTaskPoller() {
     intervalId = setInterval(async () => {
       try {
         console.log("Polling");
-        let taskStatusResponse: TaskStatusResponse =
-          await useGatewayService().getTaskStatus(taskId);
-        console.log(taskStatusResponse);
-        if (taskStatusResponse.status === "COMPLETED") {
+        taskStatus.value = await useGatewayService().getTaskStatus(taskId);
+        console.log(taskStatus.value);
+
+        //TODO: WE should here render the results
+
+        if (taskStatus.value.status === "COMPLETED") {
           stopPolling();
         }
       } catch (err) {
@@ -33,5 +40,5 @@ export function useTaskPoller() {
 
   onUnmounted(stopPolling); // auto-cleanup
 
-  return { taskStatus, isPolling, startPolling, stopPolling };
+  return { taskStatus: taskStatus, isPolling, startPolling, stopPolling };
 }
