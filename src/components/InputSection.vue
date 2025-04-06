@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import FileUpload from "@/components/utilities/FileUpload.vue";
+import { LoggerService } from "@/services/LoggerService.js";
 
 // Accept the ref as a prop
 const props = defineProps({ taskService: Object });
@@ -20,7 +21,8 @@ function startSimulation() {
 }
 
 function stopSimulation() {
-  alert("Stopping simulation...");
+  LoggerService.get().notification_message("Stopping simulation...");
+  LoggerService.get().log_message("Hello there" + Math.random());
 }
 
 defineExpose({

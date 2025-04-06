@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { watch } from "vue";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
+import { LoggerService } from "@/services/LoggerService";
 
 const props = defineProps({ taskService: Object });
 
@@ -20,10 +21,18 @@ watch(
   },
 );
 
+watch(LoggerService.get().log, (newValue, oldValue) => {
+  updateLog(newValue);
+});
+
 // Update them anytime
 function updateOutput(image, log) {
-  logContent.value += log + "\n";
+  updateLog(log);
   outputImage.value = image;
+}
+
+function updateLog(log) {
+  logContent.value += log + "\n";
 }
 </script>
 

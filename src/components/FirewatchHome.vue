@@ -4,6 +4,7 @@ import OutputSection from "./OutputSection.vue";
 import ResponsiveCardContent from "./utilities/ResponsiveCardContent.vue";
 
 import { useTaskService } from "@/composables/useTaskService.js";
+import NotificationsSection from "@/components/utilities/NotificationsSection.vue";
 const taskService = useTaskService();
 </script>
 
@@ -50,6 +51,7 @@ const taskService = useTaskService();
       </v-col>
     </v-row>
   </v-container>
+  <notifications-section></notifications-section>
 </template>
 
 <style scoped></style>
