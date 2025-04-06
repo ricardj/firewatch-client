@@ -1,8 +1,7 @@
 export class StartTaskRequest {
-    upload_key:string
+  upload_key: string;
 
-    constructor(uploadKey) {
-        this.upload_key = uploadKey ?? "NO UPLOAD KEY";
-    }
+  constructor(uploadKey: string) {
+    this.upload_key = uploadKey ?? "NO UPLOAD KEY";
+  }
 }
-
