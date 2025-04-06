@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import FirewatchHome from "@/components/FirewatchHome.vue";
+</script>
 
 <template>
   <v-app>

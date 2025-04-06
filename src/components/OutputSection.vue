@@ -1,22 +1,28 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { watch } from "vue";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 
-defineProps({ taskService });
+const props = defineProps({ taskService: Object });
 
 const logContent = ref("...");
 const outputImage = ref("https://mfiles.alphacoders.com/100/1008007.png");
 
+function getTaskStatus(): TaskStatusResponse {
+  return props.taskService.taskStatus;
+}
+
 watch(
-  taskService.value.taskPoller.taskStatus,
-  (pre, newStatus: TaskStatusResponse) => {
+  getTaskStatus(),
+  (newStatus: TaskStatusResponse, oldStatus: TaskStatusResponse) => {
+    console.log("Detected change on status task");
     updateOutput(newStatus.currentImage, newStatus.logs);
   },
 );
 
 // Update them anytime
 function updateOutput(image, log) {
-  logContent.value = log;
+  logContent.value += log;
   outputImage.value = image;
 }
 </script>

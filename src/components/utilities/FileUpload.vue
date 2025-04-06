@@ -1,6 +1,5 @@
 <script setup>
 import { useFileUpload } from "@/composables/useFileUpload.ts";
-import { UploadURLResponse } from "@/models/UploadURLResponse.js";
 
 const fileUpload = useFileUpload();
 const { fileToUpload } = fileUpload;

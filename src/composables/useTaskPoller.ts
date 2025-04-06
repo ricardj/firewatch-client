@@ -1,18 +1,17 @@
 import { ref, onUnmounted, Ref } from "vue";
 import { useGatewayService } from "@/composables/useGatewayService";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
+import { TaskStatusRequest } from "@/models/TaskStatusRequest";
 
 export function useTaskPoller() {
-  const taskStatus: Ref<TaskStatusResponse> = ref({
-    id: "NONE",
-    status: "NONE", // TODO: Replace with an enum or union type when ready
-    logs: "...",
-    currentImage: "https://mfiles.alphacoders.com/100/1008007.png",
-  });
   const isPolling: Ref<boolean> = ref(false);
   let intervalId: number | null = null;
 
-  const startPolling = (taskId: string, intervalMs = 3000) => {
+  const startPolling = (
+    taskId: string,
+    intervalMs: number = 3000,
+    taskStatus: Ref<TaskStatusResponse>,
+  ) => {
     isPolling.value = true;
 
     intervalId = setInterval(async () => {
@@ -23,7 +22,11 @@ export function useTaskPoller() {
 
         //TODO: WE should here render the results
 
-        if (taskStatus.value.status === "COMPLETED") {
+        if (
+          taskStatus.value.status === "COMPLETED" ||
+          taskStatus.value.status === "SUCCESS"
+        ) {
+          console.log("Task status completed");
           stopPolling();
         }
       } catch (err) {
@@ -34,11 +37,10 @@ export function useTaskPoller() {
   };
 
   const stopPolling = () => {
+    console.log("Stop polling: IntervalId=" + intervalId);
     if (intervalId) clearInterval(intervalId);
     isPolling.value = false;
   };
 
-  onUnmounted(stopPolling); // auto-cleanup
-
-  return { taskStatus: taskStatus, isPolling, startPolling, stopPolling };
+  return { isPolling, startPolling, stopPolling };
 }
