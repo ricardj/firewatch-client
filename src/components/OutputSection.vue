@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import { watch } from "vue";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 import { LoggerService } from "@/services/LoggerService";
@@ -36,6 +36,14 @@ function updateLog(log) {
 }
 
 const loading = LoggerService.get().isLoading;
+
+const logContainer = ref<HTMLElement | null>(null);
+watch(logContent, async () => {
+  await nextTick(); // Wait for DOM update
+  if (logContainer.value) {
+    logContainer.value.scrollTop = logContainer.value.scrollHeight;
+  }
+});
 </script>
 
 <template>
@@ -51,17 +59,21 @@ const loading = LoggerService.get().isLoading;
 
     <v-card class="flex-grow-1 fill-height" color="surface" elevation="2">
       <v-card-title>Logs</v-card-title>
-      <v-card-text style="font-family: monospace; white-space: pre-line"
-        >{{ logContent }}
+      <v-card-text
+        style="height: 100%; font-family: monospace; white-space: pre-line"
+      >
+        <div ref="logContainer" class="overflow-auto" style="height: 90%">
+          {{ logContent }}
+          <v-fade-transition leave-absolute>
+            <v-progress-circular
+              v-if="loading"
+              color="info"
+              size="24"
+              indeterminate
+            ></v-progress-circular>
+          </v-fade-transition>
+        </div>
       </v-card-text>
-      <v-fade-transition leave-absolute>
-        <v-progress-circular
-          v-if="loading"
-          color="info"
-          size="24"
-          indeterminate
-        ></v-progress-circular>
-      </v-fade-transition>
     </v-card>
   </v-container>
 </template>
