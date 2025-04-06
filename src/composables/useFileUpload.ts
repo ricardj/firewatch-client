@@ -1,12 +1,14 @@
 // composables/useFileUpload.js
 import {ref} from 'vue'
-import {useGatewayService} from "@/composables/useGatewayService.ts";
+import {UploadURLResponse} from "@/models/UploadURLResponse";
+import {useGatewayService} from "@/composables/useGatewayService";
+
 
 
 export function useFileUpload() {
     const fileToUpload = ref(null) // shared reactive file
-    let uploadedFile = null;
-    let uploadURLResponse = null; //TODO: here set the upload url.
+    let uploadedFile :File;
+    let uploadURLResponse :UploadURLResponse; //TODO: here set the upload url.
 
     async function tryUploadFile() {
 

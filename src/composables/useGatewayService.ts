@@ -1,4 +1,8 @@
-import {UploadURLResponse} from '@/models/UploadURLResponse.ts'
+import {StartTaskRequest} from "@/models/StartTaskRequest";
+import {TaskStatusResponse} from "@/models/TaskStatusResponse";
+import {TaskStatusRequest} from "@/models/TaskStatusRequest";
+import {UploadURLResponse} from "@/models/UploadURLResponse";
+
 
 const TARGET_SERVER = "http://localhost:8000";
 
@@ -11,7 +15,7 @@ const getUploadUrlEndpoint = `${TARGET_SERVER}/get_upload_url`;
 
 export function useGatewayService() {
 
-    async function startTask(startTaskRequest) {
+    async function startTask(startTaskRequest :StartTaskRequest): Promise<TaskStatusResponse> {
         console.log(startTaskRequest);
         console.log(JSON.stringify(startTaskRequest));
         const response = await fetch(startTaskEndpoint, {
@@ -24,14 +28,14 @@ export function useGatewayService() {
         let responseJson =  await response.json();
         console.log("We received an answer");
         console.log(responseJson);
-        return responseJson.body; //TaskStatusResponse
+        return responseJson.body;
     }
 
     async function stopTask() {
         //TODO: This for now won't have an implementation
     }
 
-    async function getTaskStatus(taskId) {
+    async function getTaskStatus(taskId :string) :Promise<TaskStatusResponse> {
         let getTaskStatusRequest = new TaskStatusRequest(taskId)
         const response = await fetch(getTaskStatusEndpoint, {
             method: "GET",
@@ -40,11 +44,11 @@ export function useGatewayService() {
 
         let json_response = await response.json();
         console.log(json_response);
-        return new TaskStatusResponse(json_response.id, response.status, response.log, response.current_image)
+        return new TaskStatusResponse(json_response.id, json_response.status, json_response.log, json_response.current_image)
 
     }
 
-    async function getUploadURL() : UploadURLResponse {
+    async function getUploadURL() : Promise<UploadURLResponse> {
         const response = await fetch(getUploadUrlEndpoint);
         let json_response = await response.json();
         let upload_key = json_response.upload_key;
@@ -52,7 +56,7 @@ export function useGatewayService() {
         return new UploadURLResponse(upload_key, upload_url);
     }
 
-    async function uploadFileToUrl(uploadFileURL, fileToUpload) {
+    async function uploadFileToUrl(uploadFileURL :string, fileToUpload :File) {
         console.log("Doing the upload file to " + uploadFileURL);
         console.log(fileToUpload);
 

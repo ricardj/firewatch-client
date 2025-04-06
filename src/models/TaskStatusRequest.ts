@@ -1,4 +1,8 @@
 export class TaskStatusRequest
 {
-    id:string
+    id:string;
+
+    constructor(taskId: string) {
+        this.id = taskId;
+    }
 }
