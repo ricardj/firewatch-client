@@ -1,4 +1,4 @@
-const TaskState = Object.freeze({
+export const TaskState = Object.freeze({
     COMPLETED : 'COMPLETED',
     FAILED : 'FAILED',
 });

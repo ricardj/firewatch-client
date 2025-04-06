@@ -1,6 +1,4 @@
-import {startTask} from "@/composables/useTaskService.js";
-import {StartTaskRequest} from "@/models/StartTaskRequest.js";
-
+import {UploadURLResponse} from '@/models/UploadURLResponse.ts'
 
 const TARGET_SERVER = "http://localhost:8000";
 
@@ -46,7 +44,7 @@ export function useGatewayService() {
 
     }
 
-    async function getUploadURL() {
+    async function getUploadURL() : UploadURLResponse {
         const response = await fetch(getUploadUrlEndpoint);
         let json_response = await response.json();
         let upload_key = json_response.upload_key;

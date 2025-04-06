@@ -1,11 +1,12 @@
-import {useGatewayService} from "@/composables/useGatewayService.js";
-import {useTaskPoller} from "@/composables/useTaskPoller.js";
-import {StartTaskRequest} from "@/models/StartTaskRequest.js"
+import {useGatewayService} from "@/composables/useGatewayService.ts";
+import {useTaskPoller} from "@/composables/useTaskPoller.ts";
+import {StartTaskRequest} from "@/models/StartTaskRequest.ts"
 
 
-export async function startTask(fileUrl) {
+export async function startTask(fileURLResponse) {
 
-    let startTaskRequest = new StartTaskRequest(fileUrl);
+    let startTaskRequest = new StartTaskRequest(fileURLResponse.uploadKey);
+    console.log(startTaskRequest);
     console.log("Created the request. Sending to Gateway Service...");
     let taskStatusResponse = await useGatewayService().startTask(startTaskRequest);
 

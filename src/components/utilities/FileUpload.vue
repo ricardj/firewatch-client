@@ -1,5 +1,5 @@
 <script setup>
-import {useFileUpload} from "@/composables/useFileUpload.js";
+import {useFileUpload} from "@/composables/useFileUpload.ts";
 
 const fileUpload = useFileUpload()
 const {fileToUpload} = fileUpload;

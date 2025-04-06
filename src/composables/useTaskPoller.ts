@@ -1,5 +1,5 @@
 import {ref, onUnmounted} from 'vue'
-import {useGatewayService} from "@/composables/useGatewayService.js";
+import {useGatewayService} from "@/composables/useGatewayService.ts";
 
 export function useTaskPoller() {
     const taskStatus = ref(null)
