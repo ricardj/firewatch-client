@@ -27,7 +27,7 @@ export async function startTask(fileURLResponse: UploadURLResponse) {
 
   //TODO: Check if the Task has been created successfully
   console.log("Now we will start polling the result.");
-  await taskPoller.startPolling(taskStatusResponse.id, 3000, taskStatus);
+  await taskPoller.startPolling(taskStatusResponse.id, 100, taskStatus);
 
   LoggerService.get().logMessage("Task finished");
   LoggerService.get().setIsLoading(false);

@@ -13,7 +13,7 @@ export function useTaskPoller() {
     intervalMs: number = 3000,
     taskStatus: Ref<TaskStatusResponse>,
   ) => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       isPolling.value = true;
 
       intervalId = setInterval(async () => {
@@ -32,7 +32,7 @@ export function useTaskPoller() {
             resolve();
           }
         } catch (err) {
-          !LoggerService.get().notificationMessage("Some kind of error.");
+          LoggerService.get().notificationMessage("Some kind of error.");
           stopPolling();
           resolve();
         }
