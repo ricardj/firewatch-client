@@ -1,14 +1,14 @@
 // src/services/Logger.ts
 
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 
 export class LoggerService {
   private static instance: LoggerService;
 
-  public isSnackbarOn: boolean = ref(false);
-  public snackbarMessage: string = ref("");
+  public isSnackbarOn: Ref<boolean> = ref(false);
+  public snackbarMessage: Ref<string> = ref("");
 
-  public log: string = ref("");
+  public log: Ref<string> = ref("");
 
   public isLoading = ref(false);
 
@@ -30,6 +30,9 @@ export class LoggerService {
   }
 
   logMessage(message: string) {
+    if (message === "") {
+      return;
+    }
     this.log.value = message;
   }
 

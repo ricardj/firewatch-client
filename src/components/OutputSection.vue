@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref } from "vue";
-import { watch } from "vue";
+import { nextTick, ref, watch } from "vue";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
 import { LoggerService } from "@/services/LoggerService";
 
@@ -32,6 +31,7 @@ function updateOutput(image, log) {
 }
 
 function updateLog(log) {
+  if (log === "") return;
   logContent.value += log + "\n";
 }
 
