@@ -21,7 +21,7 @@ function startSimulation() {
 }
 
 function stopSimulation() {
-  LoggerService.get().notificationMessage("Hello " + Math.random());
+  LoggerService.get().notificationMessage("x".repeat(1000));
 }
 
 defineExpose({
@@ -35,8 +35,8 @@ defineExpose({
     style="gap: 10px"
   >
     <FileUpload ref="fileUploadComponent"></FileUpload>
-    <v-btn color="primary" @click="uploadFile"> Upload file </v-btn>
-    <v-btn color="primary" @click="startSimulation"> Start simulation </v-btn>
-    <v-btn color="primary" @click="stopSimulation"> Stop simulation </v-btn>
+    <v-btn color="primary" @click="uploadFile"> Upload file</v-btn>
+    <v-btn color="primary" @click="startSimulation"> Start simulation</v-btn>
+    <v-btn color="primary" @click="stopSimulation"> Stop simulation</v-btn>
   </v-container>
 </template>
