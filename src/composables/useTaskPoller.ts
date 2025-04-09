@@ -1,7 +1,6 @@
-import { ref, onUnmounted, Ref } from "vue";
+import { ref, Ref } from "vue";
 import { useGatewayService } from "@/composables/useGatewayService";
 import { TaskStatusResponse } from "@/models/TaskStatusResponse";
-import { TaskStatusRequest } from "@/models/TaskStatusRequest";
 import { LoggerService } from "@/services/LoggerService";
 
 export function useTaskPoller() {
@@ -23,7 +22,8 @@ export function useTaskPoller() {
 
           if (
             taskStatus.value.status === "COMPLETED" ||
-            taskStatus.value.status === "SUCCESS"
+            taskStatus.value.status === "SUCCESS" ||
+            taskStatus.value.status === "FAILURE"
           ) {
             LoggerService.get().notificationMessage(
               `Task finished: ${taskStatus.value.status}`,

@@ -27,6 +27,11 @@ watch(LoggerService.get().log, (newValue, oldValue) => {
 // Update them anytime
 function updateOutput(image, log) {
   updateLog(log);
+  updateImage(image);
+}
+
+function updateImage(image: any) {
+  if (image === "") return;
   outputImage.value = image;
 }
 
