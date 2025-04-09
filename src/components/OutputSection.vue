@@ -62,13 +62,36 @@ watch(logContent, async () => {
       ></v-img>
     </v-card>
 
-    <v-card class="flex-grow-1 fill-height" color="surface" elevation="2">
+    <v-card
+      class="flex-grow-1 fill-height"
+      color="surface"
+      elevation="2"
+      style="width: 50%"
+    >
       <v-card-title>Logs</v-card-title>
       <v-card-text
-        style="height: 100%; font-family: monospace; white-space: pre-line"
+        style="
+          height: 100%;
+          width: 100%;
+          font-family: monospace;
+          white-space: pre-wrap;
+        "
       >
-        <div ref="logContainer" class="overflow-auto" style="height: 90%">
-          {{ logContent }}
+        <div
+          ref="logContainer"
+          class="overflow-auto"
+          style="
+            height: 90%;
+            overflow-x: auto;
+            width: 100%;
+            white-space: pre-wrap;
+            display: block;
+          "
+        >
+          <pre
+            v-html="logContent"
+            style="margin: 0; white-space: pre; min-width: max-content"
+          ></pre>
           <v-fade-transition leave-absolute>
             <v-progress-circular
               v-if="loading"
